@@ -2,7 +2,7 @@ normalize_voom <- function(counts, class){
   design <- model.matrix(~class)
   dge <- DGEList(counts = counts)
   dge <- calcNormFactors(dge)
-  v <- voom(dge, design, plot = FALSE)
+  v <- voom(dge)
   return(v)
 }
 
