@@ -6,7 +6,8 @@ normalize_voom <- function(counts, class){
   return(v)
 }
 
-deg_voom <- function(v, keepn = 10){
+deg_voom <- function(v,class, keepn = 10){
+  design <- model.matrix(~class)
   fit <- lmFit(v, design)
   fit <- eBayes(fit)
   f <- topTable(fit,number = keepn)
