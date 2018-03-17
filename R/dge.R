@@ -1,5 +1,8 @@
-normalize_voom <- function(counts, class){
-  design <- model.matrix(~class)
+#' Normalize counts matrix with voom
+#'
+#' @param counts A counts matrix with genes in rows and samples in columns
+#' @return voom object
+normalize_voom <- function(counts){
   dge <- DGEList(counts = counts)
   dge <- calcNormFactors(dge)
   v <- voom(dge)
@@ -13,3 +16,5 @@ deg_voom <- function(v,class, keepn = 10){
   f <- topTable(fit,number = keepn)
   return(rownames(f))
 }
+
+
