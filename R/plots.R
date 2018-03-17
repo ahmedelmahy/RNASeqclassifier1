@@ -1,3 +1,11 @@
+#' Plot top four principle components in a counts matrix colored with a class
+#' variable, useful to see how well a gene subset of a counts matrix can classify
+#' the data
+#'
+#' @param counts A counts matrix
+#' @param class A vector of assigned class for each sample e.g. "disease" or
+#' "control"
+#' @return A grid of ggplot2 plots
 pca <- function(counts, class){
   df_mat <- as.data.frame(t(counts))
   df_pca <- prcomp(df_mat)
