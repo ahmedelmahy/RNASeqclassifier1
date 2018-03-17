@@ -1,13 +1,13 @@
 Package: RNASeqclassifier
 Type: Package
-Title: A collection of functions for feature selection and classifier development
-from RNASeq data.
+Title: A collection of functions for feature selection and classifier development 
+    from RNASeq data.
 Version: 0.1.0
 Author: Ahmed Elmahy
 Maintainer: Ahmed Elmahy <ahmed.elmahy@helmholtz-muenchen.de>
 Description: A collection of functions for feature selection and classifier 
-development. It includes wrapper functions for different normalisation methods,
-feature selection algorithms, plots speficied for RNASeq data.
+    development. It includes wrapper functions for different normalisation methods,
+    feature selection algorithms, plots speficied for RNASeq data.
 License: GPL
 Encoding: UTF-8
 LazyData: true
