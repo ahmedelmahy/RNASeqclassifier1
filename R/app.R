@@ -33,13 +33,21 @@ ui <- fluidPage(
              ,
 
              tabPanel("Normalisation",
+                      numericInput(inputId = "num_genes", label = "Number of genes to keep",value = 10000),
+                      actionButton(inputId = "filter0", label = "filter0"),
+
                       radioButtons("normalize_with", label = "normalize_with", choices = c("deseq2","voom"), selected = "deseq2"),
                       actionButton(inputId = "normalize_button",label = "Normalize Data")),
 
              tabPanel("Split data",
                       actionButton(inputId = "split_button", label = "OK")),
 
-             tabPanel("Compare models"),
+             tabPanel("Feature Selection",
+                      fluidRow(
+                        column(8,plotOutput("pca")),
+
+                        column(12,plotOutput("pca")))),
+
 
              tabPanel("Visualize selected genes"),
 
@@ -58,9 +66,13 @@ server <- function(input, output, session) {
   # Buttons
   observeEvent(input$read_button,{
     rse_gene <<- load_data(input$id)
+    all_counts <<- assay(rse_gene)
     class1 <<- get_class(rse_gene)
     updateTabsetPanel(session,"My_Application", selected = "Normalisation")
 
+  })
+  observeEvent(input$filter0,{
+    counts <<- filter0(counts, 10000)
   })
   observeEvent(input$normalize_button,{
     #normalized_df <<- normaliv(read_df, input$normalize_with)
@@ -70,9 +82,14 @@ server <- function(input, output, session) {
 
   observeEvent(input$split_button,{
     l <<- RNASeqclassifier::split_counts(v_all$E, class1)
-    updateTabsetPanel(session,"My_Application", selected = "Compare models")
+    updateTabsetPanel(session,"My_Application", selected = "Feature Selection")
   })
+
+
   #---------------------------------------------------------------------------
+  output$pca <- renderPlot(
+    pca(counts, class1)
+  )
   output$current_process <- renderText(paste0(":~$",
                                               variables$current_task))
 }
