@@ -24,11 +24,9 @@ ui <- fluidPage(
   navbarPage("My_Application",id = "My_Application",
              tabPanel("Load data",
                       span(text_read),
-                      textInput("id", "writeID"),
+                      textInput(inputId = "study_id", label = "study_id"),
                       span("For example SRP061240"),
-                      actionButton(inputId = "read_button", label = "Read Data"))
-
-             ,
+                      actionButton(inputId = "read_button", label = "Read Data")),
 
              tabPanel("Normalisation",
                       numericInput(inputId = "num_genes", label = "Number of genes to keep",value = 10000),
@@ -63,7 +61,7 @@ server <- function(input, output, session) {
   #-------------------------------------------------------------------------------
   # Buttons
   observeEvent(input$read_button,{
-    rse_gene <<- RNASeqclassifier::load_data(input$id)
+    rse_gene <<- RNASeqclassifier::load_data(input$study_id)
     all_counts <<- assay(rse_gene)
     class1 <<- RNASeqclassifier::get_class(rse_gene)
     updateTabsetPanel(session,"My_Application", selected = "Normalisation")
