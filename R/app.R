@@ -25,9 +25,7 @@ ui <- fluidPage(
              tabPanel("Load data",
                       span(text_read),
                       textInput("id", "writeID"),
-                      HTML("Choose: <br> (1) if columns are genes and rows are the sample names , the first column is sample ID and there is additional column
-                           called class <br> (2) if bla bla bla format"),
-                      radioButtons("format_with", label = "format_with", choices = c(1,2), selected = 1),
+                      span("For example SRP061240"),
                       actionButton(inputId = "read_button", label = "Read Data"))
 
              ,
