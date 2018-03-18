@@ -15,9 +15,9 @@ filter0 <- function(counts, keepn = 10000){
 }
 
 #' filter genes by linear correlation with the class variable
-#' @mat a train matrix
-#' @class a class vector
-#' @keepn Number of genes to keep
+#' @param mat a train matrix
+#' @param class a class vector
+#' @param keepn Number of genes to keep
 #' @return A subset of the counts matrix with the selected genes
 filter_linear_correlation <- function(mat,class, keepn = 2000){
   s <- as.data.frame(mat)
@@ -28,6 +28,4 @@ filter_linear_correlation <- function(mat,class, keepn = 2000){
 
   return(f$genes[1:keepn])
 }
-filter_linear_correlation(t(l$train),l$train_class, keepn = 500)
-
 

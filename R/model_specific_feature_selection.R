@@ -2,8 +2,8 @@
 #'
 #' @param x train dataframe
 #' @param y train class
-#' @keepn Number of genes to keep
-#' @fitControl a configuration list for caret package
+#' @param keepn Number of genes to keep
+#' @param fitControl a configuration list for caret package
 #' @return a vector of selected genes
 eliminate_RF <- function(x,y, keepn = 100, fitControl){
   fit_tune <- train(x = x,

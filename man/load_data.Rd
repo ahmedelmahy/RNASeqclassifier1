@@ -5,7 +5,7 @@
 \title{download an Rdata object from the recount2 project to be extended to
 other public RNASeq datasets}
 \usage{
-load_data(id = "SRP042228")
+load_data(id)
 }
 \arguments{
 \item{id}{Id of the study to be downloaded and analysed}
