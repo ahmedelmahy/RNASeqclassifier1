@@ -63,14 +63,14 @@ server <- function(input, output, session) {
   #-------------------------------------------------------------------------------
   # Buttons
   observeEvent(input$read_button,{
-    rse_gene <<- load_data(input$id)
+    rse_gene <<- RNASeqclassifier::load_data(input$id)
     all_counts <<- assay(rse_gene)
-    class1 <<- get_class(rse_gene)
+    class1 <<- RNASeqclassifier::get_class(rse_gene)
     updateTabsetPanel(session,"My_Application", selected = "Normalisation")
 
   })
   observeEvent(input$filter0,{
-    counts <<- filter0(counts, 10000)
+    counts <<- RNASeqclassifier::filter0(counts, 10000)
   })
   observeEvent(input$normalize_button,{
     #normalized_df <<- normaliv(read_df, input$normalize_with)
