@@ -12,7 +12,7 @@ pca <- function(counts, class, multiple = FALSE, ...){
   df_mat <- as.data.frame(t(counts))
   df_pca <- prcomp(df_mat)
   rm(df_mat)
-  if (multiple = TRUE){
+  if (multiple == TRUE){
 
   } else{
   df_pca_x <- as.data.frame(df_pca$x)

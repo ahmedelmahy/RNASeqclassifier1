@@ -10,3 +10,18 @@ load_data <- function(id = "SRP042228"){
   load("rse_gene.Rdata")
   return(rse_gene)
 }
+
+#' Get class vector from the rse_gene
+#' @param rse_gene an object downloaded from recount
+#' @return a character vector of the assigned class
+get_class <- function(rse_gene){
+  class <- vector()
+  di <- dim(colData(rse_gene))[1]
+  for (i in 1:di){
+    class[i] <- as.character(as.data.frame(strsplit(colData(rse_gene)$characteristics[[i]],":"))[2,4])
+  }
+  class <- gsub(" ","",class)
+  keep_class <- which(class %in% c("ColorectalCancer","HealthyControl"))
+  class2 <- class[keep_class]
+  return(class2)
+}

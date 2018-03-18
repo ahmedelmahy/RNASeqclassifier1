@@ -6,13 +6,16 @@
 variable, useful to see how well a gene subset of a counts matrix can classify
 the data}
 \usage{
-pca(counts, class)
+pca(counts, class, multiple = FALSE, ...)
 }
 \arguments{
 \item{counts}{A counts matrix}
 
 \item{class}{A vector of assigned class for each sample e.g. "disease" or
 "control"}
+
+\item{multiple}{If true plots PC1~PC2 from multiple subsets of the data
+hoping that the PCA segregation improves at each subset.}
 }
 \value{
 A grid of ggplot2 plots
