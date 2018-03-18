@@ -61,7 +61,7 @@ server <- function(input, output, session) {
   #-------------------------------------------------------------------------------
   # Buttons
   observeEvent(input$read_button,{
-    rse_gene <<- RNASeqclassifier::load_data(input$study_id)
+    rse_gene <<- load_data()
     all_counts <<- assay(rse_gene)
     class1 <<- RNASeqclassifier::get_class(rse_gene)
     updateTabsetPanel(session,"My_Application", selected = "Normalisation")
