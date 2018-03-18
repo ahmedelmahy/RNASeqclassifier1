@@ -18,3 +18,6 @@ eliminate_RF <- function(x,y, keepn = 100, fitControl){
   topgenes <- as.character(var_imp$genes[1:keepn])
   return(topgenes)
 }
+
+
+
