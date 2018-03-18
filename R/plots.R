@@ -5,12 +5,16 @@
 #' @param counts A counts matrix
 #' @param class A vector of assigned class for each sample e.g. "disease" or
 #' "control"
+#' @param multiple If true plots PC1~PC2 from multiple subsets of the data
+#' hoping that the PCA segregation improves at each subset.
 #' @return A grid of ggplot2 plots
-pca <- function(counts, class){
+pca <- function(counts, class, multiple = FALSE, ...){
   df_mat <- as.data.frame(t(counts))
   df_pca <- prcomp(df_mat)
   rm(df_mat)
+  if (multiple = TRUE){
 
+  } else{
   df_pca_x <- as.data.frame(df_pca$x)
   p <- ggplot(df_pca_x)
   p1 <- p + geom_point(aes(x = PC1,y= PC2, col = class),
@@ -27,4 +31,4 @@ pca <- function(counts, class){
                        size = .5)
 
   gridExtra::grid.arrange(p1,p2,p3,p4,p5,p6)
-}
+}}
