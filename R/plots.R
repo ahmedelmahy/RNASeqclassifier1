@@ -13,7 +13,6 @@ pca <- function(counts, class, multiple = FALSE, ...){
   df_pca <- prcomp(df_mat)
   rm(df_mat)
   if (multiple == TRUE){
-
   } else{
   df_pca_x <- as.data.frame(df_pca$x)
   p <- ggplot(df_pca_x)

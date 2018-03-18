@@ -58,7 +58,7 @@ server <- function(input, output, session) {
   # Buttons
   observeEvent(input$read_button,{
     rse_gene <<- load_data(input$id)
-    class <<- get_class(rse_gene)
+    class1 <<- get_class(rse_gene)
     updateTabsetPanel(session,"My_Application", selected = "Normalisation")
 
   })
@@ -69,7 +69,7 @@ server <- function(input, output, session) {
   })
 
   observeEvent(input$split_button,{
-    l <<- RNASeqclassifier::split_counts(v_all$E, class)
+    l <<- RNASeqclassifier::split_counts(v_all$E, class1)
     updateTabsetPanel(session,"My_Application", selected = "Compare models")
   })
   #---------------------------------------------------------------------------
