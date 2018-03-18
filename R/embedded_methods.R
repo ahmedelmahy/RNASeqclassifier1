@@ -1,13 +1,21 @@
-eliminate_RF <- function(x,y, keepn = 100, fitControl){
+#' Eliminate features with glmnet
+#'
+#' @param x train dataframe
+#' @param y train class
+#' @keepn Number of genes to keep
+#' @fitControl a configuration list for caret package
+#' @return a vector of selected genes
+eliminate_glm <- function(x,y, keepn = 100, fitControl){
   fit_tune <- train(x = x,
                     y = y,
-                    method = "rf",
+                    method = "glmnet",
                     trControl = fitControl)
 
   fit <- caret::train(x = x,
                       y = y,
-                      method ="rf",
-                      tuneGrid=expand.grid(.mtry=fit_tune$bestTune$mtry),
+                      method ="glmnet",
+                      tuneGrid=expand.grid(.alpha = fit_tune$bestTune$alpha,
+                                           .lambda = fit_tune$bestTune$lambda),
                       trControl = fitControl)
   var_imp <- varImp(fit) # random forest
   var_imp <- data.frame(cbind(row.names(var_imp$importance),
@@ -18,6 +26,8 @@ eliminate_RF <- function(x,y, keepn = 100, fitControl){
   topgenes <- as.character(var_imp$genes[1:keepn])
   return(topgenes)
 }
+
+
 
 
 
