@@ -16,6 +16,8 @@ config_caret <- function(...){
   fitControl <- caret::trainControl(method = "cv",
                                     classProbs = T,
                                     savePredictions = T,
-                                    verboseIter = TRUE, allowParallel = TRUE,...)
+                                    verboseIter = TRUE,
+                                    sampling = "smote",
+                                    allowParallel = TRUE,...)
   return(fitControl)
 }
