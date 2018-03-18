@@ -1,4 +1,4 @@
-eliminate_RF <- function(x,y, keepn = 100){
+eliminate_RF <- function(x,y, keepn = 100, fitControl){
   fit_tune <- train(x = x,
                     y = y,
                     method = "rf",
