@@ -4,7 +4,7 @@
 #' @param id Id of the study to be downloaded and analysed
 #' @return rse_gene An RangedSummarizedExperiment object
 #' @example
-load_data <- function(id = "SRP042228"){
+load_data <- function(id = "SRP061240"){
   url <- paste0("http://duffel.rail.bio/recount/v2/",id,"/rse_gene.Rdata")
   system(paste0("wget ", url))
   load("rse_gene.Rdata")
