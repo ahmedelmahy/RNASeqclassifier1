@@ -35,7 +35,6 @@ pca <- function(counts, class, multiple = FALSE, ...){
 
 
 compare_selected_features_barplot <- function(df, class){
-
   df <- as.data.frame(df)
   df$class <- class
   df <- df[order(df$class),]

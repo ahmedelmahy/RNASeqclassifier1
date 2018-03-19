@@ -26,8 +26,7 @@ fit_svmLinear <- function(x, y, fitControl){
                y = y,
                method = "svmLinear",
                trControl = fitControl,
-               tuneGrid=expand.grid(.sigma = fit_tune$bestTune$sigma,
-                                    .C=fit_tune$bestTune$C),
+               tuneGrid=expand.grid(.C=fit_tune$bestTune$C),
                metric = "ROC")
   return(fit)
 }
