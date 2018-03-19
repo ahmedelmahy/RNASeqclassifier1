@@ -1,4 +1,8 @@
-
+#' fit a svmRadial
+#'
+#' @param x A train data.frame
+#' @param y A vector of train classes
+#' @param fitControl A configuration variable for caret
 fit_svmRadial <- function(x, y, fitControl){
   fit_tune <- train(x = x,
                     y = y,
@@ -15,7 +19,11 @@ fit_svmRadial <- function(x, y, fitControl){
   return(fit)
 }
 
-
+#' fit a svmLinear
+#'
+#' @param x A train data.frame
+#' @param y A vector of train classes
+#' @param fitControl A configuration variable for caret
 fit_svmLinear <- function(x, y, fitControl){
   fit_tune <- train(x = x,
                     y = y,
@@ -31,7 +39,11 @@ fit_svmLinear <- function(x, y, fitControl){
   return(fit)
 }
 
-
+#' fit a glmnet model
+#'
+#' @param x A train data.frame
+#' @param y A vector of train classes
+#' @param fitControl A configuration variable for caret
 fit_glm <- function(x,y, fitControl){
   fit_tune <- train(x = x,
                     y = y,
@@ -47,6 +59,11 @@ fit_glm <- function(x,y, fitControl){
   return(fit)
 }
 
+#' fit a random forest model
+#'
+#' @param x A train data.frame
+#' @param y A vector of train classes
+#' @param fitControl A configuration variable for caret
 fit_rf <- function(x,y, fitControl){
   fit_tune <- train(x = x,
                     y = y,
