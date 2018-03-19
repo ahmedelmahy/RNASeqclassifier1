@@ -76,6 +76,7 @@ compare_selected_features_barplot <- function(selected_genes_df, with){
                 geom_col() +
                 facet_grid(variable~.)
             }else{
+              # the one that works
               df <- as.data.frame(cbind(x, class))
               df <- df[order(df$class),]
               df$samplenum <- c(1: dim(df)[1])
