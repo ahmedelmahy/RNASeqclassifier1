@@ -33,7 +33,10 @@ pca <- function(counts, class, multiple = FALSE, ...){
 }}
 
 
-
+#' plot the counts of the selected genes though samples colored by class
+#'
+#' @param df A subset of the data with selected genes as columns
+#' @param class A vector of the class
 compare_selected_features_barplot <- function(df, class){
   df <- as.data.frame(df)
   df$class <- class
@@ -48,7 +51,9 @@ compare_selected_features_barplot <- function(df, class){
   print(p1)
 }
 
-
+#' plot ROC curves from all models
+#' @param model_title_list a list of caret fit models named
+#' with the name of the model
 plot_multipe_rocs <- function(model_title_list){
   results_list_roc <- list(NA)
   for(i in 1:length(model_title_list)){

@@ -61,6 +61,17 @@ fit_rf <- function(x,y, fitControl){
   return(fit)
 }
 
-
+#' Create confusion matrix of the predictions vs reference class in the
+#' test set.
+#'
+#' @param fit a caret model
+#' @param test_df A test dataframe
+#' @param test_class A vector of the classes
+#' @return A confusion matrix
+class_predict <- function(fit, test_df, test_class){
+  predictions<-predict(object=fit,test_df)
+  t <- confusionMatrix(predictions, test_class)
+  return(t)
+}
 
 
