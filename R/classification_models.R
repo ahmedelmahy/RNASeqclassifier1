@@ -1,4 +1,4 @@
-fit_svmRadial <- function(x, y, fitConrol){
+fit_svmRadial <- function(x, y, fitControl){
   fit_tune <- train(x = x,
                     y = y,
                     method = "svmRadial",
@@ -15,7 +15,7 @@ fit_svmRadial <- function(x, y, fitConrol){
 }
 
 
-fit_svmLinear <- function(x, y, fitConrol){
+fit_svmLinear <- function(x, y, fitControl){
   fit_tune <- train(x = x,
                     y = y,
                     method = "svmLinear",
