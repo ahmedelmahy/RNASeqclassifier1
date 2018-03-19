@@ -57,8 +57,7 @@ fit_rf <- function(x,y, fitControl){
   fit <- caret::train(x = x,
                       y = y,
                       method ="rf",
-                      tuneGrid=expand.grid(.alpha = fit_tune$bestTune$alpha,
-                                           .lambda = fit_tune$bestTune$lambda),
+                      tuneGrid=expand.grid(.mtry=fit_tune$bestTune$mtry),
                       trControl = fitControl)
   return(fit)
 }
