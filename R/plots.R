@@ -57,7 +57,7 @@ compare_selected_features_barplot <- function(df, class){
 plot_multipe_rocs <- function(model_title_list){
   results_list_roc <- list(NA)
   for(i in 1:length(model_title_list)){
-    myRoc_on_train_data <- roc(predictor = model_title_list[[i]]$pred$lym,
+    myRoc_on_train_data <- roc(predictor = model_title_list[[i]]$pred[[3]],
                                response = model_title_list[[i]]$pred$obs)
     message(auc(myRoc_on_train_data))
     results_list_roc[[i]] <- data_frame(
