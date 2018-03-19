@@ -54,6 +54,7 @@ compare_selected_features_barplot <- function(df, class){
 #' plot ROC curves from all models
 #' @param model_title_list a list of caret fit models named
 #' with the name of the model
+#' @param A list of caret models
 plot_multipe_rocs <- function(model_title_list){
   results_list_roc <- list(NA)
   for(i in 1:length(model_title_list)){
