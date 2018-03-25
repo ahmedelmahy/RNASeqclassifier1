@@ -14,6 +14,26 @@ filter0 <- function(counts, keepn = 10000){
   return(counts[keep,])
 }
 
+#' filter low expressed genes using cpm
+#'
+#' @param counts A counts matrix
+#' @param cpm_limit A limit for cpm
+#' @param keepn Number of genes to keep
+#' @return A new counts matrix with selected genes
+filter_cpm <- function(counts, cpm_limit = 1, keepn = 100){
+  cpm <- cpm(counts, log = TRUE)
+  cpm_gene <- rowSums(cpm > cpm_limit)
+
+  keep <- sort(cpm_gene, decreasing = TRUE)
+  keep <- keep[1:min(c(keepn,sum(cpm_gene != 0)))]
+  counts <- counts[names(keep),]
+  return(counts)
+}
+
+
+
+
+
 #' filter genes by linear correlation with the class variable
 #' @param mat a train matrix
 #' @param class a class vector

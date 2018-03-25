@@ -7,7 +7,7 @@
 normalize_deseq2(counts, class)
 }
 \arguments{
-\item{counts}{A counts matrix with genes in rows and samples in columns}
+\item{counts}{A counts matrix}
 
 \item{class}{A vector of assigned class for each sample e.g. "disease" or
 "control"}

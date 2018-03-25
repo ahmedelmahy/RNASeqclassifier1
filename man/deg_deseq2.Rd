@@ -4,12 +4,16 @@
 \alias{deg_deseq2}
 \title{Select diffentially expressed genes(DGEs) from a DESeqDataSet object}
 \usage{
-deg_deseq2(ddsDESeqObject, padj_i = 0.01, logfc_i = 2)
+deg_deseq2(counts, class, padj_i = 0.01, logfc_i = 1, keepn)
 }
 \arguments{
-\item{ddsDESeqObject}{A DESeqDataSet object}
+\item{counts}{matrix}
+
+\item{class}{a class vector}
 
 \item{logfc_i}{A lower threshold for log fold change}
+
+\item{keepn}{Number of genes to keep}
 
 \item{padj}{A upper threshold for p adjusted value}
 }
