@@ -31,11 +31,13 @@ deg_voom <- function(v,class, keepn = 10){
 #' "control"
 #' @return DESeqDataSet object
 normalize_deseq2 <- function(counts, class){
-  DESeq_Data<- DESeqDataSetFromMatrix(countData = counts,colData= data.frame(class),design = ~ class)
+  DESeq_Data<- DESeqDataSetFromMatrix(countData = counts,
+                                      colData= data.frame(class2),
+                                      design = ~ class2)
   DESeq_Data <- DESeq(DESeq_Data,parallel = TRUE)
-  return(DESeq_Data)
+  c <- counts(DESeq_Data, normalize = TRUE)
+  return(c)
 }
-
 
 #' Select diffentially expressed genes(DGEs) from a DESeqDataSet object
 #'
