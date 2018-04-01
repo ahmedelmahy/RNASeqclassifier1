@@ -25,7 +25,7 @@ selectStudy <- function(clinical_s3, s3, selected = "acc"){
   keep_row_s3 <- which(rownames(s3) %in% keep_code)
   s4 <- s3[keep_row_s3,]
   s4 <- as.matrix(as.data.frame(lapply(s4, as.numeric)))
-  rownames(s4) <- rownames(s3)
+  rownames(s4) <- rownames(s3[keep_row_s3,])
   return(t(s4))
 }
 
