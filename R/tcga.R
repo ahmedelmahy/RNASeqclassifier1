@@ -1,5 +1,5 @@
 update_counts <- function(selected_study, class){
-  s <- selected_study[,which(!(is.na(class) | class == "NA"))]
+  s <- selected_study[,colnames(selected_study)[which(!(is.na(class) | class == "NA"))]]
   return(s)
 }
 
