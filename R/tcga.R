@@ -69,7 +69,7 @@ downloadTcgaStudy <- function(id){
   rnaseqDf2 <- sapply(rnaseqDf, as.numeric)
   keep <- which(colSums(rnaseqDf2) > 0)
   rownames(rnaseqDf2) <- rownames(rnaseqDf)
-  rnaseqDf2 <- rnaseqDf2[,keep]
+  rnaseqDf2 <<- rnaseqDf2[,keep]
   #----------------------------------------------
   # clinical df
   clinical_r <- readLines(lClinical[1])
