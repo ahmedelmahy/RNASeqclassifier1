@@ -83,7 +83,7 @@ downloadTcgaStudy <- function(id){
   keep <- which(sapply(clinicalDf, FUN = function(x){
     sum(x == "NA") < (length(x)-10)
   }))
-  keepPatient = which(clinicalDf2$patient.bcr_patient_barcode %in%  rownames(rnaseqDf2))
+  keepPatient = which(clinicalDf$patient.bcr_patient_barcode %in%  rownames(rnaseqDf2))
   clinicalDf2 <<- clinicalDf[keepPatient,keep]
   clinicalDf3 <<- clinicalDf2[order(match(clinicalDf2$patient.bcr_patient_barcode,rownames(rnaseqDf2))),]
   #-----------------------------------------------
